@@ -50,59 +50,75 @@ public class MainActivity extends AppCompatActivity {
         String i = btn.getText().toString();
         String s;
 
-        switch (i){
+        switch(i){
             case "+":
-                firstNumber = Double.parseDouble(txtView.getText().toString());
                 operation = "+";
-                txtView.setText("0");
-                otherView.setText(firstNumber + " " + operation);
                 break;
             case "-":
-                firstNumber = Double.parseDouble(txtView.getText().toString());
                 operation = "-";
-                txtView.setText("0");
-                otherView.setText(firstNumber + " " + operation);
                 break;
             case "*":
-                firstNumber = Double.parseDouble(txtView.getText().toString());
                 operation = "*";
-                txtView.setText("0");
-                otherView.setText(firstNumber + " " + operation);
                 break;
             case "/":
-                firstNumber = Double.parseDouble(txtView.getText().toString());
                 operation = "/";
-                txtView.setText("0");
-                otherView.setText(firstNumber + " " + operation);
                 break;
             case "%":
-                firstNumber = Double.parseDouble(txtView.getText().toString());
                 operation = "%";
-                txtView.setText("0");
-                otherView.setText(firstNumber + " " + operation);
                 break;
             case "√":
-                firstNumber = Double.parseDouble(txtView.getText().toString());
-                result = Math.sqrt(firstNumber);
-                wasSet = true;
+                result = Math.sqrt(Double.parseDouble(txtView.getText().toString()));
                 s = (long) result == result ? "" + (long) result : "" + result;
+                wasSet = true;
+                operation = "";
+                firstNumber = 0;
+                secondNumber = 0;
                 txtView.setText(s);
+                otherView.setText("");
                 break;
             case "1/x":
-                firstNumber = Double.parseDouble(txtView.getText().toString());
-                result = 1 / firstNumber;
+                result = 1 / Double.parseDouble(txtView.getText().toString());
                 wasSet = true;
                 s = (long) result == result ? "" + (long) result : "" + result;
                 txtView.setText(s);
                 break;
             case "±":
-                firstNumber = Double.parseDouble(txtView.getText().toString());
-                result = firstNumber * -1;
+                result = Double.parseDouble(txtView.getText().toString()) * -1;
                 s = (long) result == result ? "" + (long) result : "" + result;
                 txtView.setText(s);
                 break;
-            default:
-                txtView.setText("error ;-;");
+        }
+
+        switch (operation){
+            case "+":
+                firstNumber = Double.parseDouble(txtView.getText().toString());
+                s = (long) firstNumber == firstNumber ? "" + (long) firstNumber : "" + firstNumber;
+                txtView.setText("0");
+                otherView.setText(s + " " + operation);
+                break;
+            case "-":
+                firstNumber = Double.parseDouble(txtView.getText().toString());
+                s = (long) firstNumber == firstNumber ? "" + (long) firstNumber : "" + firstNumber;
+                txtView.setText("0");
+                otherView.setText(s + " " + operation);
+                break;
+            case "*":
+                firstNumber = Double.parseDouble(txtView.getText().toString());
+                s = (long) firstNumber == firstNumber ? "" + (long) firstNumber : "" + firstNumber;
+                txtView.setText("0");
+                otherView.setText(s + " " + operation);
+                break;
+            case "/":
+                firstNumber = Double.parseDouble(txtView.getText().toString());
+                s = (long) firstNumber == firstNumber ? "" + (long) firstNumber : "" + firstNumber;
+                txtView.setText("0");
+                otherView.setText(s + " " + operation);
+                break;
+            case "%":
+                firstNumber = Double.parseDouble(txtView.getText().toString());
+                s = (long) firstNumber == firstNumber ? "" + (long) firstNumber : "" + firstNumber;
+                txtView.setText("0");
+                otherView.setText(s + operation);
                 break;
         }
     }
@@ -110,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
     public void Result(View v){
         TextView txtView = (TextView) findViewById(R.id.textView);
         TextView otherView = (TextView) findViewById(R.id.textView2);
-        Button btn = (Button) findViewById(v.getId());
         String s;
 
         switch (operation){
@@ -163,6 +178,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void Erase(View v){
         TextView txtView = (TextView) findViewById(R.id.textView);
+        TextView otherView = (TextView) findViewById(R.id.textView2);
         Button btn = (Button) findViewById(v.getId());
         String i = btn.getText().toString();
 
@@ -170,11 +186,14 @@ public class MainActivity extends AppCompatActivity {
             case "C":
                 firstNumber = 0;
                 secondNumber = 0;
+                operation = "";
                 txtView.setText("0");
+                otherView.setText("");
                 break;
             case "CE":
                 if (operation.equals("")){
                     firstNumber = 0;
+                    operation = "";
                     txtView.setText("0");
                 } else {
                     secondNumber = 0;
@@ -184,7 +203,6 @@ public class MainActivity extends AppCompatActivity {
             case "<-":
                 txtView.setText(txtView.getText().toString().substring(0,txtView.length() - 1));
                 break;
-
             default:
                 break;
         }

@@ -47,6 +47,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/button21"
+        android:layout_toLeftOf="@+id/button21"
         android:layout_alignRight="@+id/button21"
         android:layout_alignEnd="@+id/button21" />
 
@@ -168,6 +169,7 @@
         android:textStyle="bold"
         android:textSize="36dp"
         android:textAlignment="textEnd"
+        android:layout_gravity="end"
         android:maxLines="1"
         android:layout_above="@+id/button22"
         android:layout_alignRight="@+id/button23"
@@ -270,6 +272,7 @@
         android:textStyle="bold"
         android:textSize="30dp"
         android:textAlignment="textEnd"
+        android:layout_gravity = "end"
         android:maxLines="1"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
